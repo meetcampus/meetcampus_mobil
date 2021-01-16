@@ -25,9 +25,17 @@ flutter_icons:
 
 
 
-  flutter:
+flutter:
 
   uses-material-design: true
- 
   assets:
     - assets/
+
+  fonts:
+    - family: Eras
+      fonts:
+        - asset: fonts/ErasBoldITC.ttf
+    - family: Gothic
+      fonts:
+        - asset: fonts/GOTHIC.TTF    
+        

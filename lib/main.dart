@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:meetcampus_mobil/screens/main_screen.dart';
+import 'screens/onboarding_screen.dart';
 
 void main() {
   runApp(MyApp());
@@ -14,7 +14,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: MainScreen(),
+      home: OnboardingScreen(),
     );
   }
 }
