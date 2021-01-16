@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:meetcampus_mobil/screens/main_screen.dart';
 import 'package:meetcampus_mobil/utilities/styles.dart';

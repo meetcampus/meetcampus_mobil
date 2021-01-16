@@ -1,7 +1,16 @@
 import 'package:flutter/material.dart';
-import 'screens/onboarding_screen.dart';
+import 'package:flutter/services.dart';
+import 'package:meetcampus_mobil/screens/onboarding_screen.dart';
+import 'package:meetcampus_mobil/screens/splash_screen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-void main() {
+int initScreen;
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  var prefs = await SharedPreferences.getInstance();
+  initScreen = await prefs.getInt('initScreen');
+  await prefs.setInt('initScreen', 1);
+  await SystemChrome.setEnabledSystemUIOverlays([]);
   runApp(MyApp());
 }
 
@@ -14,7 +23,11 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: OnboardingScreen(),
+      initialRoute: initScreen == 0 || initScreen == null ? 'first' : '/',
+      routes: {
+        '/': (context) => SplashScreen(),
+        'first': (context) => OnboardingScreen(),
+      },
     );
   }
 }

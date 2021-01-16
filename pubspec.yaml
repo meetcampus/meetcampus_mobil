@@ -1,7 +1,7 @@
 name: meetcampus_mobil
 description: meetcampus mobil app.
 
-publish_to: 'none' 
+publish_to: 'none'
 
 version: 1.0.0+1
 
@@ -11,7 +11,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-
+  after_layout: ^1.0.7+2
+  shared_preferences: ^0.5.12+4
+  smooth_page_indicator: ^0.2.0
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -22,8 +24,6 @@ flutter_icons:
   android: true
   ios: true
   image_path: "assets/icon.png"
-
-
 
 flutter:
 
@@ -37,5 +37,4 @@ flutter:
         - asset: fonts/ErasBoldITC.ttf
     - family: Gothic
       fonts:
-        - asset: fonts/GOTHIC.TTF    
-        
+        - asset: fonts/GOTHIC.TTF
