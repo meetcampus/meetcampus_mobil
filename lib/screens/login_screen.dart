@@ -36,6 +36,7 @@ class _LoginScreenState extends State<LoginScreen> {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               buildEmailTexField(),
+              SizedBox(height: 15,),
               buildPassTexField(),
               SizedBox(
                 height: dynamicHeight * 0.10,
@@ -76,9 +77,11 @@ class _LoginScreenState extends State<LoginScreen> {
     return Column(
       children: [
         Container(
+
           width: dynamicWidth,
           height: dynamicHeight / 6,
           decoration: BoxDecoration(
+
             color: backColorBlue,
             borderRadius: BorderRadius.circular(10),
           ),
@@ -156,8 +159,10 @@ class _LoginScreenState extends State<LoginScreen> {
     return TextFormField(
       obscureText: isPasswordVisible,
       decoration: InputDecoration(
+          border: OutlineInputBorder(),
           prefixIcon: Icon(Icons.lock),
           labelText: 'Password',
+          hintText: "Enter Password",
           suffixIcon: IconButton(
             onPressed: () => setState(() => isPasswordVisible = !isPasswordVisible),
             icon: isPasswordVisible ? Icon(Icons.visibility_off) : Icon(Icons.visibility),
@@ -167,9 +172,13 @@ class _LoginScreenState extends State<LoginScreen> {
 
   TextFormField buildEmailTexField() {
     return TextFormField(
-      keyboardType: TextInputType.name,
+
+      keyboardType: TextInputType.emailAddress,
       decoration: InputDecoration(
+
+        border: OutlineInputBorder(),
         labelText: 'Email',
+        hintText: "Enter Email",
         prefixIcon: Icon(Icons.email),
         hoverColor: backColorBlue,
       ),
