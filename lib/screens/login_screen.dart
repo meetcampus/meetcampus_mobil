@@ -36,6 +36,7 @@ class _LoginScreenState extends State<LoginScreen> {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               buildEmailTexField(),
+              SizedBox(height: 15,),
               buildPassTexField(),
               SizedBox(
                 height: dynamicHeight * 0.10,
@@ -75,15 +76,26 @@ class _LoginScreenState extends State<LoginScreen> {
   Column buildButton(double dynamicWidth, double dynamicHeight) {
     return Column(
       children: [
-        Container(
-          width: dynamicWidth,
-          height: dynamicHeight / 6,
-          decoration: BoxDecoration(
-            color: backColorBlue,
-            borderRadius: BorderRadius.circular(10),
-          ),
-          child: Center(
-            child: Text('Log in', style: TextStyle(fontFamily: 'Eras', fontSize: 30, color: textColorOne)),
+        InkWell(
+          onTap: () {},
+          child: Ink(
+            width: dynamicWidth,
+            height: dynamicHeight / 6,
+            decoration: BoxDecoration(
+              boxShadow: [
+                BoxShadow(
+                  color: backColorBlue.withOpacity(0.3),
+                  spreadRadius: 3,
+                  blurRadius: 7,
+                  offset: Offset(0, 3), // changes position of shadow
+                ),
+              ],
+              color: backColorBlue,
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: Center(
+              child: Text('Log in', style: TextStyle(fontFamily: 'Eras', fontSize: 30, color: textColorOne)),
+            ),
           ),
         ),
         SizedBox(
@@ -116,7 +128,7 @@ class _LoginScreenState extends State<LoginScreen> {
         SizedBox(
           height: dynamicHeight * 0.10,
         ),
-        GestureDetector(
+        InkWell(
           onTap: () {
             Navigator.pushReplacement(
               context,
@@ -156,8 +168,10 @@ class _LoginScreenState extends State<LoginScreen> {
     return TextFormField(
       obscureText: isPasswordVisible,
       decoration: InputDecoration(
+          border: OutlineInputBorder(),
           prefixIcon: Icon(Icons.lock),
           labelText: 'Password',
+          hintText: "Enter Password",
           suffixIcon: IconButton(
             onPressed: () => setState(() => isPasswordVisible = !isPasswordVisible),
             icon: isPasswordVisible ? Icon(Icons.visibility_off) : Icon(Icons.visibility),
@@ -167,9 +181,13 @@ class _LoginScreenState extends State<LoginScreen> {
 
   TextFormField buildEmailTexField() {
     return TextFormField(
-      keyboardType: TextInputType.name,
+
+      keyboardType: TextInputType.emailAddress,
       decoration: InputDecoration(
+
+        border: OutlineInputBorder(),
         labelText: 'Email',
+        hintText: "Enter Email",
         prefixIcon: Icon(Icons.email),
         hoverColor: backColorBlue,
       ),

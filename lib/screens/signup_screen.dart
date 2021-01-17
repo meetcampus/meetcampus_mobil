@@ -30,15 +30,19 @@ class _SignupScreenState extends State<SignupScreen> {
       flex: 1,
       child: SingleChildScrollView(
         child: Padding(
-          padding: EdgeInsets.symmetric(horizontal: dynamicWidth / 10, vertical: dynamicHeight * 0.01),
+          padding: EdgeInsets.symmetric(
+            horizontal: dynamicWidth / 10,
+          ),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               buildNameTexField(),
+              SizedBox(height: 15,),
               buildEmailTexField(),
+              SizedBox(height: 15,),
               buildPassTexField(),
               SizedBox(
-                height: dynamicHeight * 0.10,
+                height: dynamicHeight * 0.06,
               ),
               buildButton(dynamicWidth, dynamicHeight)
             ],
@@ -75,19 +79,30 @@ class _SignupScreenState extends State<SignupScreen> {
   Column buildButton(double dynamicWidth, double dynamicHeight) {
     return Column(
       children: [
-        Container(
-          width: dynamicWidth,
-          height: dynamicHeight / 6,
-          decoration: BoxDecoration(
-            color: backColorBlue,
-            borderRadius: BorderRadius.circular(10),
-          ),
-          child: Center(
-            child: Text('Sign up', style: TextStyle(fontFamily: 'Eras', fontSize: 30, color: textColorOne)),
+        InkWell(
+          onTap: () {},
+          child: Ink(
+            width: dynamicWidth,
+            height: dynamicHeight / 6,
+            decoration: BoxDecoration(
+              boxShadow: [
+                BoxShadow(
+                  color: backColorBlue.withOpacity(0.3),
+                  spreadRadius: 3,
+                  blurRadius: 7,
+                  offset: Offset(0, 3), // changes position of shadow
+                ),
+              ],
+              color: backColorBlue,
+              borderRadius: BorderRadius.circular(10),
+            ),
+            child: Center(
+              child: Text('Sign up', style: TextStyle(fontFamily: 'Eras', fontSize: 30, color: textColorOne)),
+            ),
           ),
         ),
         SizedBox(
-          height: dynamicHeight * 0.10,
+          height: dynamicHeight * 0.010,
         ),
         Row(
           children: [
@@ -114,14 +129,14 @@ class _SignupScreenState extends State<SignupScreen> {
           ],
         ),
         SizedBox(
-          height: dynamicHeight * 0.10,
+          height: dynamicHeight * 0.06,
         ),
-        GestureDetector(
+        InkWell(
           onTap: () {
             Navigator.pushReplacement(
               context,
               PageRouteBuilder(
-                  transitionDuration: Duration(seconds:1),
+                  transitionDuration: Duration(seconds: 1),
                   transitionsBuilder: (BuildContext context, Animation<double> animation, Animation<double> secAnimation, Widget child) {
                     animation = CurvedAnimation(parent: animation, curve: Curves.bounceOut);
                     return ScaleTransition(
@@ -158,6 +173,8 @@ class _SignupScreenState extends State<SignupScreen> {
       decoration: InputDecoration(
           prefixIcon: Icon(Icons.lock),
           labelText: 'Password',
+          hintText: "Enter Password",
+          border: OutlineInputBorder(),
           suffixIcon: IconButton(
             onPressed: () => setState(() => isPasswordVisible = !isPasswordVisible),
             icon: isPasswordVisible ? Icon(Icons.visibility_off) : Icon(Icons.visibility),
@@ -170,6 +187,8 @@ class _SignupScreenState extends State<SignupScreen> {
       keyboardType: TextInputType.name,
       decoration: InputDecoration(
         labelText: 'Name',
+        hintText: "Enter Name",
+        border: OutlineInputBorder(),
         prefixIcon: Icon(Icons.person),
         hoverColor: backColorBlue,
       ),
@@ -178,9 +197,11 @@ class _SignupScreenState extends State<SignupScreen> {
 
   TextFormField buildEmailTexField() {
     return TextFormField(
-      keyboardType: TextInputType.name,
+      keyboardType: TextInputType.emailAddress,
       decoration: InputDecoration(
         labelText: 'Email',
+        hintText: "Enter Email",
+        border: OutlineInputBorder(),
         prefixIcon: Icon(Icons.email),
         hoverColor: backColorBlue,
       ),
