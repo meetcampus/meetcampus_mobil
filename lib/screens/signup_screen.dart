@@ -37,9 +37,7 @@ class _SignupScreenState extends State<SignupScreen> {
             crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               buildNameTexField(),
-              SizedBox(height: 15,),
               buildEmailTexField(),
-              SizedBox(height: 15,),
               buildPassTexField(),
               SizedBox(
                 height: dynamicHeight * 0.06,
@@ -173,8 +171,6 @@ class _SignupScreenState extends State<SignupScreen> {
       decoration: InputDecoration(
           prefixIcon: Icon(Icons.lock),
           labelText: 'Password',
-          hintText: "Enter Password",
-          border: OutlineInputBorder(),
           suffixIcon: IconButton(
             onPressed: () => setState(() => isPasswordVisible = !isPasswordVisible),
             icon: isPasswordVisible ? Icon(Icons.visibility_off) : Icon(Icons.visibility),
@@ -187,10 +183,7 @@ class _SignupScreenState extends State<SignupScreen> {
       keyboardType: TextInputType.name,
       decoration: InputDecoration(
         labelText: 'Name',
-        hintText: "Enter Name",
-        border: OutlineInputBorder(),
         prefixIcon: Icon(Icons.person),
-        hoverColor: backColorBlue,
       ),
     );
   }
@@ -200,10 +193,8 @@ class _SignupScreenState extends State<SignupScreen> {
       keyboardType: TextInputType.emailAddress,
       decoration: InputDecoration(
         labelText: 'Email',
-        hintText: "Enter Email",
-        border: OutlineInputBorder(),
+        hintText: 'Enter Email',
         prefixIcon: Icon(Icons.email),
-        hoverColor: backColorBlue,
       ),
     );
   }
