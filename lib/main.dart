@@ -6,12 +6,21 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 int initScreen;
 void main() async {
+  //onboarding just to see once
   WidgetsFlutterBinding.ensureInitialized();
   var prefs = await SharedPreferences.getInstance();
   initScreen = await prefs.getInt('initScreen');
   await prefs.setInt('initScreen', 1);
+
+  //hide status bar
   await SystemChrome.setEnabledSystemUIOverlays([]);
-  runApp(MyApp());
+
+  //disable rotation
+  await SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+  ]).then((_) {
+    runApp(MyApp());
+  });
 }
 
 class MyApp extends StatelessWidget {

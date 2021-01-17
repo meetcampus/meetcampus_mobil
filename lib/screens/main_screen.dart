@@ -12,7 +12,7 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: backColorBlue,
+      backgroundColor: backColorBlue, 
       body: Center(
         child: Text(
           'COMING SOON',

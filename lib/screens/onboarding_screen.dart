@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:meetcampus_mobil/screens/main_screen.dart';
+import 'package:meetcampus_mobil/screens/login_screen.dart';
 import 'package:meetcampus_mobil/utilities/styles.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -83,7 +83,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               ),
             ],
           ),
-          buildNextButton(),
         ],
       ),
     );
@@ -118,7 +117,6 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               ),
             ],
           ),
-          buildNextButton(),
         ],
       ),
     );
@@ -159,7 +157,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             ),
             GestureDetector(
               onTap: () {
-                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => MainScreen()));
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginScreen()));
               },
               child: Container(
                 height: 50,
