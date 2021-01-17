@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:meetcampus_mobil/screens/main_screen.dart';
 import 'package:meetcampus_mobil/screens/onboarding_screen.dart';
 import 'package:meetcampus_mobil/screens/splash_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -34,8 +35,8 @@ class MyApp extends StatelessWidget {
       ),
       initialRoute: initScreen == 0 || initScreen == null ? 'first' : '/',
       routes: {
-        '/': (context) => SplashScreen(),
-        'first': (context) => OnboardingScreen(),
+        '/': (context) => MainScreen(),
+        'first': (context) => MainScreen(),
       },
     );
   }
