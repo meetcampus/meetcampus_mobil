@@ -10,4 +10,6 @@ final textStyleLogo2 = TextStyle(fontFamily: 'Eras', fontSize: 40, color: textCo
 
 final textStyleSubTitle = TextStyle(fontFamily: 'Gothic', fontSize: 20, color: textColorOne);
 
+final drawerText = TextStyle(fontFamily: 'Gothic', fontSize: 15, color: Colors.grey);
+
 final dummyString = 'Lorem Ipsum is simply dummy\ntext of the printing and\ntypesetting industry.';
