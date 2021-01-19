@@ -93,7 +93,9 @@ class _LoginScreenState extends State<LoginScreen> {
               borderRadius: BorderRadius.circular(10),
             ),
             child: Center(
-              child: Text('Log in', style: TextStyle(fontFamily: 'Eras', fontSize: 30, color: textColorOne)),
+              child: Text('Log in',
+                  style: TextStyle(
+                      fontFamily: 'Eras', fontSize: 30, color: textColorOne)),
             ),
           ),
         ),
@@ -127,15 +129,21 @@ class _LoginScreenState extends State<LoginScreen> {
               context,
               PageRouteBuilder(
                   transitionDuration: Duration(seconds: 1),
-                  transitionsBuilder: (BuildContext context, Animation<double> animation, Animation<double> secAnimation, Widget child) {
-                    animation = CurvedAnimation(parent: animation, curve: Curves.bounceOut);
+                  transitionsBuilder: (BuildContext context,
+                      Animation<double> animation,
+                      Animation<double> secAnimation,
+                      Widget child) {
+                    animation = CurvedAnimation(
+                        parent: animation, curve: Curves.bounceOut);
                     return ScaleTransition(
                       scale: animation,
                       alignment: Alignment.center,
                       child: child,
                     );
                   },
-                  pageBuilder: (BuildContext context, Animation<double> animation, Animation<double> secAnimation) {
+                  pageBuilder: (BuildContext context,
+                      Animation<double> animation,
+                      Animation<double> secAnimation) {
                     return SignupScreen();
                   }),
             );
@@ -149,7 +157,9 @@ class _LoginScreenState extends State<LoginScreen> {
               borderRadius: BorderRadius.circular(10),
             ),
             child: Center(
-              child: Text('Sign up', style: TextStyle(fontFamily: 'Eras', fontSize: 30, color: Colors.grey)),
+              child: Text('Sign up',
+                  style: TextStyle(
+                      fontFamily: 'Eras', fontSize: 30, color: Colors.grey)),
             ),
           ),
         ),
@@ -164,8 +174,11 @@ class _LoginScreenState extends State<LoginScreen> {
           prefixIcon: Icon(Icons.lock),
           labelText: 'Password',
           suffixIcon: IconButton(
-            onPressed: () => setState(() => isPasswordVisible = !isPasswordVisible),
-            icon: isPasswordVisible ? Icon(Icons.visibility_off) : Icon(Icons.visibility),
+            onPressed: () =>
+                setState(() => isPasswordVisible = !isPasswordVisible),
+            icon: isPasswordVisible
+                ? Icon(Icons.visibility_off)
+                : Icon(Icons.visibility),
           )),
     );
   }
