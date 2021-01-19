@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:meetcampus_mobil/screens/login_screen.dart';
 import 'package:meetcampus_mobil/utilities/styles.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class SignupScreen extends StatefulWidget {
   SignupScreen({Key key}) : super(key: key);
@@ -95,7 +96,9 @@ class _SignupScreenState extends State<SignupScreen> {
               borderRadius: BorderRadius.circular(10),
             ),
             child: Center(
-              child: Text('Sign up', style: TextStyle(fontFamily: 'Eras', fontSize: 30, color: textColorOne)),
+              child: Text('signup'.tr(),
+                  style: TextStyle(
+                      fontFamily: 'Eras', fontSize: 30, color: textColorOne)),
             ),
           ),
         ),
@@ -135,15 +138,21 @@ class _SignupScreenState extends State<SignupScreen> {
               context,
               PageRouteBuilder(
                   transitionDuration: Duration(seconds: 1),
-                  transitionsBuilder: (BuildContext context, Animation<double> animation, Animation<double> secAnimation, Widget child) {
-                    animation = CurvedAnimation(parent: animation, curve: Curves.bounceOut);
+                  transitionsBuilder: (BuildContext context,
+                      Animation<double> animation,
+                      Animation<double> secAnimation,
+                      Widget child) {
+                    animation = CurvedAnimation(
+                        parent: animation, curve: Curves.bounceOut);
                     return ScaleTransition(
                       scale: animation,
                       alignment: Alignment.center,
                       child: child,
                     );
                   },
-                  pageBuilder: (BuildContext context, Animation<double> animation, Animation<double> secAnimation) {
+                  pageBuilder: (BuildContext context,
+                      Animation<double> animation,
+                      Animation<double> secAnimation) {
                     return LoginScreen();
                   }),
             );
@@ -157,7 +166,9 @@ class _SignupScreenState extends State<SignupScreen> {
               borderRadius: BorderRadius.circular(10),
             ),
             child: Center(
-              child: Text('Log in', style: TextStyle(fontFamily: 'Eras', fontSize: 30, color: Colors.grey)),
+              child: Text('login'.tr(),
+                  style: TextStyle(
+                      fontFamily: 'Eras', fontSize: 30, color: Colors.grey)),
             ),
           ),
         ),
@@ -170,10 +181,13 @@ class _SignupScreenState extends State<SignupScreen> {
       obscureText: isPasswordVisible,
       decoration: InputDecoration(
           prefixIcon: Icon(Icons.lock),
-          labelText: 'Password',
+          labelText: 'password'.tr(),
           suffixIcon: IconButton(
-            onPressed: () => setState(() => isPasswordVisible = !isPasswordVisible),
-            icon: isPasswordVisible ? Icon(Icons.visibility_off) : Icon(Icons.visibility),
+            onPressed: () =>
+                setState(() => isPasswordVisible = !isPasswordVisible),
+            icon: isPasswordVisible
+                ? Icon(Icons.visibility_off)
+                : Icon(Icons.visibility),
           )),
     );
   }
@@ -182,7 +196,7 @@ class _SignupScreenState extends State<SignupScreen> {
     return TextFormField(
       keyboardType: TextInputType.name,
       decoration: InputDecoration(
-        labelText: 'Name',
+        labelText: 'name'.tr(),
         prefixIcon: Icon(Icons.person),
       ),
     );
@@ -193,7 +207,6 @@ class _SignupScreenState extends State<SignupScreen> {
       keyboardType: TextInputType.emailAddress,
       decoration: InputDecoration(
         labelText: 'Email',
-        hintText: 'Enter Email',
         prefixIcon: Icon(Icons.email),
       ),
     );

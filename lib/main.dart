@@ -23,9 +23,9 @@ void main() async {
       child: MyApp(),
       supportedLocales: [Locale('en', 'US'), Locale('tr', 'TR')],
       path: 'assets/language',
+      startLocale: Locale('tr', 'TR'),
       fallbackLocale: Locale('en', 'US'),
       saveLocale: true,
-
     ));
   });
 }

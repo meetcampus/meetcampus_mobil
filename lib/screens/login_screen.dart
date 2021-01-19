@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:meetcampus_mobil/screens/signup_screen.dart';
 import 'package:meetcampus_mobil/utilities/styles.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -93,7 +94,7 @@ class _LoginScreenState extends State<LoginScreen> {
               borderRadius: BorderRadius.circular(10),
             ),
             child: Center(
-              child: Text('Log in',
+              child: Text('login'.tr(),
                   style: TextStyle(
                       fontFamily: 'Eras', fontSize: 30, color: textColorOne)),
             ),
@@ -110,7 +111,7 @@ class _LoginScreenState extends State<LoginScreen> {
               width: (dynamicWidth / 2) - 50,
             ),
             Text(
-              'or',
+              'or'.tr(),
               style: TextStyle(color: Colors.grey, fontWeight: FontWeight.bold),
             ),
             Container(
@@ -157,7 +158,7 @@ class _LoginScreenState extends State<LoginScreen> {
               borderRadius: BorderRadius.circular(10),
             ),
             child: Center(
-              child: Text('Sign up',
+              child: Text('signup'.tr(),
                   style: TextStyle(
                       fontFamily: 'Eras', fontSize: 30, color: Colors.grey)),
             ),
@@ -172,7 +173,7 @@ class _LoginScreenState extends State<LoginScreen> {
       obscureText: isPasswordVisible,
       decoration: InputDecoration(
           prefixIcon: Icon(Icons.lock),
-          labelText: 'Password',
+          labelText: 'password'.tr(),
           suffixIcon: IconButton(
             onPressed: () =>
                 setState(() => isPasswordVisible = !isPasswordVisible),

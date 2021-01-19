@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:meetcampus_mobil/utilities/styles.dart';
+import 'package:easy_localization/easy_localization.dart';
 
 class MainScreen extends StatefulWidget {
   MainScreen({Key key}) : super(key: key);
@@ -32,7 +33,8 @@ class _MainScreenState extends State<MainScreen> {
             height: dynamicHeight / 3,
             child: DrawerHeader(
               child: Padding(
-                padding: EdgeInsets.symmetric(vertical: (dynamicHeight / 3) / 5),
+                padding:
+                    EdgeInsets.symmetric(vertical: (dynamicHeight / 3) / 5),
                 child: Center(
                   child: Column(
                     children: [
@@ -65,7 +67,7 @@ class _MainScreenState extends State<MainScreen> {
                   width: 5,
                 ),
                 Text(
-                  'Home',
+                  'home'.tr(),
                   style: drawerText,
                 ),
               ],
@@ -83,7 +85,7 @@ class _MainScreenState extends State<MainScreen> {
                   width: 5,
                 ),
                 Text(
-                  'Meet with the graduates',
+                  'meetgraduates'.tr(),
                   style: drawerText,
                 ),
               ],
@@ -155,7 +157,7 @@ class _MainScreenState extends State<MainScreen> {
                   width: 5,
                 ),
                 Text(
-                  'Logout',
+                  'logout'.tr(),
                   style: drawerText,
                 ),
               ],
