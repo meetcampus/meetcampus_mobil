@@ -91,10 +91,10 @@ class _MainScreenState extends State<MainScreen> {
         decoration: BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.centerLeft,
-            end: Alignment(3, 0.0),
+            end: Alignment(2, 0.0),
             colors: [
               Color(0xff14698E),
-              textColorTwo,
+              Color(0xff35A9DB),
             ],
           ),
         ),
