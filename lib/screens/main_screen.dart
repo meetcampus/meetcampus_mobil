@@ -26,11 +26,25 @@ class _MainScreenState extends State<MainScreen> {
       initialPage: ClassBuilder.fromString('Home'),
       items: [
         KFDrawerItem.initWithPage(
-          text:
-              Text('Home', style: TextStyle(color: Colors.white, fontSize: 18)),
+          text: Text('home'.tr(), style: drawerTitleTextStyle),
           icon: Icon(Icons.home, color: Colors.white),
           page: Home(),
         ),
+        KFDrawerItem.initWithPage(
+          text: Text('meetgraduates'.tr(), style: drawerTitleTextStyle),
+          icon: Icon(Icons.emoji_people, color: Colors.white),
+          page: Home(),
+        ),
+        KFDrawerItem.initWithPage(
+          text: Text('settings'.tr(), style: drawerTitleTextStyle),
+          icon: Icon(Icons.settings, color: Colors.white),
+          page: Home(),
+        ),
+        KFDrawerItem.initWithPage(
+          text: Text('logout'.tr(), style: drawerTitleTextStyle),
+          icon: Icon(Icons.logout, color: Colors.white),
+          page: Home(),
+        )
       ],
     );
   }
@@ -64,8 +78,7 @@ class _MainScreenState extends State<MainScreen> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: <Widget>[
-                    Text('Meet Campus',
-                        style: TextStyle(fontSize: 17, color: Colors.white)),
+                    Text('Meet Campus', style: drawerTitleTextStyle),
                     SizedBox(height: 2),
                     Text('Student', style: drawerSubTitleTextStyle),
                   ],
@@ -74,21 +87,15 @@ class _MainScreenState extends State<MainScreen> {
             ),
           ),
         ),
-        footer: KFDrawerItem(
-          text: Text(
-            'Logout',
-            style: TextStyle(color: Colors.grey, fontSize: 18),
-          ),
-        ),
+        footer: Text(''),
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
+            begin: Alignment.centerLeft,
+            end: Alignment(3, 0.0),
             colors: [
-              Color.fromRGBO(20, 105, 142, 1.0),
-              Color.fromRGBO(0, 22, 19, 1.0)
+              Color(0xff14698E),
+              textColorTwo,
             ],
-            tileMode: TileMode.repeated,
           ),
         ),
       ),
