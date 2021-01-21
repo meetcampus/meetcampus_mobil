@@ -1,11 +1,14 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:meetcampus_mobil/screens/class_builder.dart';
 import 'package:meetcampus_mobil/screens/main_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 int initScreen;
 void main() async {
+  //create class for drawer
+  ClassBuilder.registerClasses();
   //onboarding just to see once
   WidgetsFlutterBinding.ensureInitialized();
   var prefs = await SharedPreferences.getInstance();

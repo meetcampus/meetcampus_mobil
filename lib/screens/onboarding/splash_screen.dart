@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:meetcampus_mobil/screens/login_screen.dart';
+import 'package:meetcampus_mobil/screens/login_register/login_screen.dart';
 import 'package:meetcampus_mobil/utilities/styles.dart';
 
 class SplashScreen extends StatefulWidget {

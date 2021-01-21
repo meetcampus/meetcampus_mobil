@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:meetcampus_mobil/screens/class_builder.dart';
+import 'package:meetcampus_mobil/screens/home.dart';
 import 'package:meetcampus_mobil/utilities/styles.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:kf_drawer/kf_drawer.dart';
 
 class MainScreen extends StatefulWidget {
   MainScreen({Key key}) : super(key: key);
@@ -10,21 +13,89 @@ class MainScreen extends StatefulWidget {
 }
 
 class _MainScreenState extends State<MainScreen> {
+  KFDrawerController kfDrawerController;
   @override
-  Widget build(BuildContext context) {
-    final dynamicHeight = MediaQuery.of(context).size.height;
+  void initState() {
+    kfDrawerController = kfDrawerControllers();
 
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: backColorBlue,
-        shadowColor: Colors.transparent,
-        title: buildTitle(),
-      ),
-      drawer: buildDrawer(dynamicHeight),
+    super.initState();
+  }
+
+  KFDrawerController kfDrawerControllers() {
+    return KFDrawerController(
+      initialPage: ClassBuilder.fromString('Home'),
+      items: [
+        KFDrawerItem.initWithPage(
+          text:
+              Text('Home', style: TextStyle(color: Colors.white, fontSize: 18)),
+          icon: Icon(Icons.home, color: Colors.white),
+          page: Home(),
+        ),
+      ],
     );
   }
 
-  Drawer buildDrawer(double dynamicHeight) {
+  @override
+  Widget build(BuildContext context) {
+    final dynamicWidth = MediaQuery.of(context).size.height;
+
+    return Scaffold(
+      body: KFDrawer(
+        controller: kfDrawerController,
+        header: Align(
+          alignment: Alignment.centerLeft,
+          child: Container(
+            padding: EdgeInsets.symmetric(horizontal: 16.0),
+            width: dynamicWidth * 0.8,
+            child: Row(
+              children: <Widget>[
+                Container(
+                  height: 50,
+                  width: 50,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(25),
+                      image: DecorationImage(
+                          image: AssetImage('assets/o2.png'),
+                          fit: BoxFit.cover)),
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text('Meet Campus',
+                        style: TextStyle(fontSize: 17, color: Colors.white)),
+                    SizedBox(height: 2),
+                    Text('Student', style: drawerSubTitleTextStyle),
+                  ],
+                )
+              ],
+            ),
+          ),
+        ),
+        footer: KFDrawerItem(
+          text: Text(
+            'Logout',
+            style: TextStyle(color: Colors.grey, fontSize: 18),
+          ),
+        ),
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [
+              Color.fromRGBO(20, 105, 142, 1.0),
+              Color.fromRGBO(0, 22, 19, 1.0)
+            ],
+            tileMode: TileMode.repeated,
+          ),
+        ),
+      ),
+    );
+  }
+
+  /*Drawer buildDrawer(double dynamicHeight) {
     return Drawer(
       child: ListView(
         padding: EdgeInsets.zero,
@@ -167,15 +238,5 @@ class _MainScreenState extends State<MainScreen> {
         ],
       ),
     );
-  }
-
-  Row buildTitle() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        Text('meet', style: textStyleLogo),
-        Text('campus', style: textStyleLogo2),
-      ],
-    );
-  }
+  }*/
 }
