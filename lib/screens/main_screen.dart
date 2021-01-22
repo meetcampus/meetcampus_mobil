@@ -1,19 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:meetcampus_mobil/screens/class_builder.dart';
 import 'package:meetcampus_mobil/screens/home.dart';
+import 'package:animated_theme_switcher/animated_theme_switcher.dart';
+import 'package:meetcampus_mobil/screens/theme_changer.dart';
 import 'package:meetcampus_mobil/utilities/styles.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:kf_drawer/kf_drawer.dart';
+import 'package:provider/provider.dart';
 
 class MainScreen extends StatefulWidget {
-  MainScreen({Key key}) : super(key: key);
-
   @override
   _MainScreenState createState() => _MainScreenState();
 }
 
 class _MainScreenState extends State<MainScreen> {
   KFDrawerController kfDrawerController;
+  bool themeSwitch = false;
+  var val = false;
   @override
   void initState() {
     kfDrawerController = kfDrawerControllers();
@@ -52,7 +55,7 @@ class _MainScreenState extends State<MainScreen> {
   @override
   Widget build(BuildContext context) {
     final dynamicWidth = MediaQuery.of(context).size.height;
-
+    var _themeChanger = Provider.of<ThemeChanger>(context);
     return Scaffold(
       body: KFDrawer(
         controller: kfDrawerController,
@@ -87,163 +90,37 @@ class _MainScreenState extends State<MainScreen> {
             ),
           ),
         ),
-        footer: Text(''),
+        footer: IconButton(
+          onPressed: () {
+            setState(() {
+              themeSwitch = !themeSwitch;
+              themeSwitch
+                  ? _themeChanger.setTheme(ThemeData.dark())
+                  : _themeChanger.setTheme(ThemeData.light());
+            });
+          },
+          icon: themeSwitch
+              ? Icon(
+                  Icons.brightness_3,
+                  color: themeSwitch ? Colors.white : Colors.white,
+                )
+              : Icon(
+                  Icons.wb_sunny,
+                  color:
+                      themeSwitch ? Colors.yellowAccent : Colors.yellowAccent,
+                ),
+        ),
         decoration: BoxDecoration(
           gradient: LinearGradient(
             begin: Alignment.centerLeft,
             end: Alignment(1, 0.0),
             colors: [
-              Color(0xff14698E),
-              Color(0xff35A9DB),
+              themeSwitch ? Color(0xff2E2E2E) : Color(0xff14698E),
+              themeSwitch ? Color(0xff2C2E2C) : Color(0xff35A9DB),
             ],
           ),
         ),
       ),
     );
   }
-
-  /*Drawer buildDrawer(double dynamicHeight) {
-    return Drawer(
-      child: ListView(
-        padding: EdgeInsets.zero,
-        children: [
-          Ink(
-            height: dynamicHeight / 3,
-            child: DrawerHeader(
-              child: Padding(
-                padding:
-                    EdgeInsets.symmetric(vertical: (dynamicHeight / 3) / 5),
-                child: Center(
-                  child: Column(
-                    children: [
-                      CircleAvatar(
-                        maxRadius: 50,
-                        backgroundColor: Colors.transparent,
-                        backgroundImage: AssetImage('assets/o1.png'),
-                      ),
-                      Text(
-                        'Person Name and Photo',
-                        style: drawerText,
-                      )
-                    ],
-                  ),
-                ),
-              ),
-              decoration: BoxDecoration(
-                color: backColorBlue,
-              ),
-            ),
-          ),
-          ListTile(
-            title: Row(
-              children: [
-                Icon(
-                  Icons.home,
-                  color: Colors.grey,
-                ),
-                SizedBox(
-                  width: 5,
-                ),
-                Text(
-                  'home'.tr(),
-                  style: drawerText,
-                ),
-              ],
-            ),
-            onTap: () {},
-          ),
-          ListTile(
-            title: Row(
-              children: [
-                Icon(
-                  Icons.emoji_people,
-                  color: Colors.grey,
-                ),
-                SizedBox(
-                  width: 5,
-                ),
-                Text(
-                  'meetgraduates'.tr(),
-                  style: drawerText,
-                ),
-              ],
-            ),
-            onTap: () {},
-          ),
-          ListTile(
-            title: Row(
-              children: [
-                Icon(
-                  Icons.more_horiz,
-                  color: Colors.grey,
-                ),
-                SizedBox(
-                  width: 5,
-                ),
-                Text(
-                  '',
-                  style: drawerText,
-                ),
-              ],
-            ),
-            onTap: () {},
-          ),
-          ListTile(
-            title: Row(
-              children: [
-                Icon(
-                  Icons.more_horiz,
-                  color: Colors.grey,
-                ),
-                SizedBox(
-                  width: 5,
-                ),
-                Text(
-                  '',
-                  style: drawerText,
-                ),
-              ],
-            ),
-            onTap: () {},
-          ),
-          ListTile(
-            title: Row(
-              children: [
-                Icon(
-                  Icons.more_horiz,
-                  color: Colors.grey,
-                ),
-                SizedBox(
-                  width: 5,
-                ),
-                Text(
-                  '',
-                  style: drawerText,
-                ),
-              ],
-            ),
-            onTap: () {},
-          ),
-          ListTile(
-            title: Row(
-              children: [
-                Icon(
-                  Icons.logout,
-                  color: Colors.grey,
-                ),
-                SizedBox(
-                  width: 5,
-                ),
-                Text(
-                  'logout'.tr(),
-                  style: drawerText,
-                ),
-              ],
-            ),
-            onTap: () {},
-          ),
-        ],
-      ),
-    );
-  }*/
 }

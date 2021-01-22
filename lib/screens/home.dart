@@ -28,6 +28,9 @@ class _HomeState extends State<Home> {
         shadowColor: Colors.transparent,
         title: buildTitle(),
       ),
+      body: Center(
+        child: Text('welcome'),
+      ),
     );
   }
 
