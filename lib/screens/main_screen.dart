@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:meetcampus_mobil/screens/class_builder.dart';
 import 'package:meetcampus_mobil/screens/home.dart';
-import 'package:animated_theme_switcher/animated_theme_switcher.dart';
 import 'package:meetcampus_mobil/screens/theme_changer.dart';
 import 'package:meetcampus_mobil/utilities/styles.dart';
 import 'package:easy_localization/easy_localization.dart';
