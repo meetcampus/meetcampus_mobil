@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:meetcampus_mobil/screens/class_builder.dart';
+import 'package:meetcampus_mobil/utilities/class_builder.dart';
 import 'package:meetcampus_mobil/screens/home.dart';
 import 'package:meetcampus_mobil/screens/settings.dart';
-import 'package:meetcampus_mobil/screens/theme_changer.dart';
+import 'package:meetcampus_mobil/utilities/theme_changer.dart';
 import 'package:meetcampus_mobil/utilities/styles.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:kf_drawer/kf_drawer.dart';
 import 'package:provider/provider.dart';
+
+import 'meet_with_graduates.dart';
 
 class MainScreen extends StatefulWidget {
   @override
@@ -36,7 +38,7 @@ class _MainScreenState extends State<MainScreen> {
         KFDrawerItem.initWithPage(
           text: Text('meetgraduates'.tr(), style: drawerTitleTextStyle),
           icon: Icon(Icons.emoji_people, color: Colors.white),
-          page: Home(),
+          page: MeetWithGraduates(),
         ),
         KFDrawerItem.initWithPage(
           text: Text('settings'.tr(), style: drawerTitleTextStyle),

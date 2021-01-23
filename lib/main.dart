@@ -1,9 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:meetcampus_mobil/screens/class_builder.dart';
+import 'package:meetcampus_mobil/utilities/class_builder.dart';
 import 'package:meetcampus_mobil/screens/main_screen.dart';
-import 'package:meetcampus_mobil/screens/theme_changer.dart';
+import 'package:meetcampus_mobil/utilities/theme_changer.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

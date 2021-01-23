@@ -2,18 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:kf_drawer/kf_drawer.dart';
 import 'package:meetcampus_mobil/utilities/component.dart';
 import 'package:meetcampus_mobil/utilities/styles.dart';
+//import 'package:easy_localization/easy_localization.dart';
 
 // ignore: must_be_immutable
-class Home extends KFDrawerContent {
-  Home({
-    Key key,
-  });
-
+class MeetWithGraduates extends KFDrawerContent {
   @override
-  _HomeState createState() => _HomeState();
+  _MeetWithGraduatesState createState() => _MeetWithGraduatesState();
 }
 
-class _HomeState extends State<Home> {
+class _MeetWithGraduatesState extends State<MeetWithGraduates> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,12 +31,9 @@ class _HomeState extends State<Home> {
         backgroundColor: backColorBlue,
         shadowColor: Colors.transparent,
         title: Text(
-          'Home',
+          'Meet Graduates',
           style: textStyleLogoAppBar2,
         ),
-      ),
-      body: Center(
-        child: Text('welcome'),
       ),
     );
   }
