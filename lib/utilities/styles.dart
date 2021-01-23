@@ -10,6 +10,11 @@ final textStyleLogo =
 final textStyleLogo2 =
     TextStyle(fontFamily: 'Eras', fontSize: 40, color: textColorOne);
 
+final textStyleLogoAppBar =
+    TextStyle(fontFamily: 'Eras', fontSize: 20, color: textColorTwo);
+final textStyleLogoAppBar2 =
+    TextStyle(fontFamily: 'Eras', fontSize: 20, color: textColorOne);
+
 final textStyleSubTitle =
     TextStyle(fontFamily: 'Gothic', fontSize: 20, color: textColorOne);
 

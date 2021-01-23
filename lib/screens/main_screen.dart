@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:meetcampus_mobil/screens/class_builder.dart';
 import 'package:meetcampus_mobil/screens/home.dart';
+import 'package:meetcampus_mobil/screens/settings.dart';
 import 'package:meetcampus_mobil/screens/theme_changer.dart';
 import 'package:meetcampus_mobil/utilities/styles.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -40,7 +41,7 @@ class _MainScreenState extends State<MainScreen> {
         KFDrawerItem.initWithPage(
           text: Text('settings'.tr(), style: drawerTitleTextStyle),
           icon: Icon(Icons.settings, color: Colors.white),
-          page: Home(),
+          page: Settings(),
         ),
         KFDrawerItem.initWithPage(
           text: Text('logout'.tr(), style: drawerTitleTextStyle),
@@ -89,25 +90,31 @@ class _MainScreenState extends State<MainScreen> {
             ),
           ),
         ),
-        footer: IconButton(
-          onPressed: () {
-            setState(() {
-              themeSwitch = !themeSwitch;
-              themeSwitch
-                  ? _themeChanger.setTheme(ThemeData.dark())
-                  : _themeChanger.setTheme(ThemeData.light());
-            });
-          },
-          icon: themeSwitch
-              ? Icon(
-                  Icons.brightness_3,
-                  color: themeSwitch ? Colors.white : Colors.white,
-                )
-              : Icon(
-                  Icons.wb_sunny,
-                  color:
-                      themeSwitch ? Colors.yellowAccent : Colors.yellowAccent,
-                ),
+        footer: Material(
+          borderRadius: BorderRadius.circular(50),
+          clipBehavior: Clip.antiAlias,
+          color: Colors.white.withOpacity(0.0),
+          child: IconButton(
+            tooltip: 'theme',
+            onPressed: () {
+              setState(() {
+                themeSwitch = !themeSwitch;
+                themeSwitch
+                    ? _themeChanger.setTheme(ThemeData.dark())
+                    : _themeChanger.setTheme(ThemeData.light());
+              });
+            },
+            icon: themeSwitch
+                ? Icon(
+                    Icons.brightness_3,
+                    color: themeSwitch ? Colors.white : Colors.white,
+                  )
+                : Icon(
+                    Icons.wb_sunny,
+                    color:
+                        themeSwitch ? Colors.yellowAccent : Colors.yellowAccent,
+                  ),
+          ),
         ),
         decoration: BoxDecoration(
           gradient: LinearGradient(

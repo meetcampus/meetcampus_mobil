@@ -1,4 +1,5 @@
 import 'package:meetcampus_mobil/screens/home.dart';
+import 'package:meetcampus_mobil/screens/settings.dart';
 
 typedef Constructor<T> = T Function();
 
@@ -12,6 +13,7 @@ void register<T>(Constructor<T> constructor) {
 class ClassBuilder {
   static void registerClasses() {
     register<Home>(() => Home());
+    register<Settings>(() => Settings());
   }
 
   static dynamic fromString(String type) {
