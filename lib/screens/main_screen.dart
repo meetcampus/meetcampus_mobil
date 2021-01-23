@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:meetcampus_mobil/utilities/class_builder.dart';
 import 'package:meetcampus_mobil/screens/home.dart';
 import 'package:meetcampus_mobil/screens/settings.dart';
+
 import 'package:meetcampus_mobil/utilities/theme_changer.dart';
-import 'package:meetcampus_mobil/utilities/styles.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:kf_drawer/kf_drawer.dart';
 import 'package:provider/provider.dart';
-
+import 'package:responsive_flutter/responsive_flutter.dart';
 import 'meet_with_graduates.dart';
 
 class MainScreen extends StatefulWidget {
@@ -19,45 +19,23 @@ class _MainScreenState extends State<MainScreen> {
   KFDrawerController kfDrawerController;
   bool themeSwitch = false;
   var val = false;
-  @override
-  void initState() {
-    kfDrawerController = kfDrawerControllers();
-
-    super.initState();
-  }
-
-  KFDrawerController kfDrawerControllers() {
-    return KFDrawerController(
-      initialPage: ClassBuilder.fromString('Home'),
-      items: [
-        KFDrawerItem.initWithPage(
-          text: Text('home'.tr(), style: drawerTitleTextStyle),
-          icon: Icon(Icons.home, color: Colors.white),
-          page: Home(),
-        ),
-        KFDrawerItem.initWithPage(
-          text: Text('meetgraduates'.tr(), style: drawerTitleTextStyle),
-          icon: Icon(Icons.emoji_people, color: Colors.white),
-          page: MeetWithGraduates(),
-        ),
-        KFDrawerItem.initWithPage(
-          text: Text('settings'.tr(), style: drawerTitleTextStyle),
-          icon: Icon(Icons.settings, color: Colors.white),
-          page: Settings(),
-        ),
-        KFDrawerItem.initWithPage(
-          text: Text('logout'.tr(), style: drawerTitleTextStyle),
-          icon: Icon(Icons.logout, color: Colors.white),
-          page: Home(),
-        )
-      ],
-    );
-  }
 
   @override
   Widget build(BuildContext context) {
+    final drawerTitleTextStyle = TextStyle(
+        fontSize: ResponsiveFlutter.of(context).fontSize(2),
+        color: Colors.white);
+
+    final drawerSubTitleTextStyle = TextStyle(
+        fontSize: ResponsiveFlutter.of(context).fontSize(2),
+        color: Colors.grey);
+
     final dynamicWidth = MediaQuery.of(context).size.height;
     var _themeChanger = Provider.of<ThemeChanger>(context);
+
+    kfDrawerController =
+        kfDrawerControllers(drawerTitleTextStyle: drawerTitleTextStyle);
+
     return Scaffold(
       body: KFDrawer(
         controller: kfDrawerController,
@@ -129,6 +107,34 @@ class _MainScreenState extends State<MainScreen> {
           ),
         ),
       ),
+    );
+  }
+
+  KFDrawerController kfDrawerControllers({TextStyle drawerTitleTextStyle}) {
+    return KFDrawerController(
+      initialPage: ClassBuilder.fromString('Home'),
+      items: [
+        KFDrawerItem.initWithPage(
+          text: Text('home'.tr(), style: drawerTitleTextStyle),
+          icon: Icon(Icons.home, color: Colors.white),
+          page: Home(),
+        ),
+        KFDrawerItem.initWithPage(
+          text: Text('meetgraduates'.tr(), style: drawerTitleTextStyle),
+          icon: Icon(Icons.emoji_people, color: Colors.white),
+          page: MeetWithGraduates(),
+        ),
+        KFDrawerItem.initWithPage(
+          text: Text('settings'.tr(), style: drawerTitleTextStyle),
+          icon: Icon(Icons.settings, color: Colors.white),
+          page: Settings(),
+        ),
+        KFDrawerItem.initWithPage(
+          text: Text('logout'.tr(), style: drawerTitleTextStyle),
+          icon: Icon(Icons.logout, color: Colors.white),
+          page: Home(),
+        )
+      ],
     );
   }
 }

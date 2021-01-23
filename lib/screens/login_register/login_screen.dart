@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:meetcampus_mobil/screens/login_register/signup_screen.dart';
 import 'package:meetcampus_mobil/utilities/styles.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:responsive_flutter/responsive_flutter.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -15,9 +16,15 @@ class _LoginScreenState extends State<LoginScreen> {
   Widget build(BuildContext context) {
     final dynamicHeight = MediaQuery.of(context).size.height * 0.4;
     final dynamicWidth = MediaQuery.of(context).size.width;
+    final textStyleLogo = TextStyle(
+        fontFamily: 'Eras',
+        fontSize: ResponsiveFlutter.of(context).fontSize(4),
+        color: textColorTwo);
+
     return Scaffold(
       body: Column(
         children: [
+          SafeArea(child: buildTitle(textStyleLogo)),
           buildUpPanel(dynamicHeight),
           buildBottomPanel(dynamicWidth, dynamicHeight),
         ],
@@ -56,7 +63,6 @@ class _LoginScreenState extends State<LoginScreen> {
         child: Container(
           child: Column(
             children: [
-              SafeArea(child: buildTitle()),
               Image.asset(
                 'assets/login.png',
                 height: dynamicHeight * 0.8,
@@ -195,7 +201,7 @@ class _LoginScreenState extends State<LoginScreen> {
     );
   }
 
-  Row buildTitle() {
+  Row buildTitle(TextStyle textStyleLogo) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [

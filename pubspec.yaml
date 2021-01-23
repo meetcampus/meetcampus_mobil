@@ -11,7 +11,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  responsive_flutter: ^0.0.4  
   easy_localization: ^2.3.3
+  flutter_responsive: ^1.0.0
   kf_drawer: ^1.1.2
   provider: ^4.3.3
   shared_preferences: ^0.5.12+4

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:meetcampus_mobil/screens/login_register/login_screen.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:meetcampus_mobil/utilities/styles.dart';
+import 'package:responsive_flutter/responsive_flutter.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class OnboardingScreen extends StatefulWidget {
@@ -14,6 +15,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final textStyleLogo = TextStyle(
+        fontFamily: 'Eras',
+        fontSize: ResponsiveFlutter.of(context).fontSize(4),
+        color: textColorTwo);
     final dynamicHeight = MediaQuery.of(context).size.height * 0.4;
     return Scaffold(
       backgroundColor: backColorBlue,
@@ -25,9 +30,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             child: PageView(
               controller: _controller,
               children: [
-                pageOne(dynamicHeight),
-                pageTwo(dynamicHeight),
-                pageThree(dynamicHeight),
+                pageOne(dynamicHeight, textStyleLogo),
+                pageTwo(dynamicHeight, textStyleLogo),
+                pageThree(dynamicHeight, textStyleLogo),
               ],
             ),
           ),
@@ -56,7 +61,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         ));
   }
 
-  Padding pageOne(double dynamicHeight) {
+  Padding pageOne(double dynamicHeight, TextStyle textStyleLogo) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: dynamicHeight * 0.1),
       child: Column(
@@ -69,8 +74,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             children: [
               Text(
                 'meet'.tr(),
-                style: TextStyle(
-                    fontFamily: 'Eras', color: textColorTwo, fontSize: 30),
+                style: textStyleLogo,
               ),
               SizedBox(
                 width: 3,
@@ -78,7 +82,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               Text(
                 'newfriends'.tr(),
                 style: TextStyle(
-                    fontFamily: 'Eras', color: textColorOne, fontSize: 30),
+                    fontFamily: 'Eras',
+                    color: textColorOne,
+                    fontSize: ResponsiveFlutter.of(context).fontSize(4)),
               )
             ],
           ),
@@ -87,7 +93,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               Text(
                 dummyString,
                 style: TextStyle(
-                    fontFamily: 'Gothic', color: textColorOne, fontSize: 20),
+                    fontFamily: 'Gothic',
+                    color: textColorOne,
+                    fontSize: ResponsiveFlutter.of(context).fontSize(2)),
               ),
             ],
           ),
@@ -96,7 +104,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     );
   }
 
-  Padding pageTwo(double dynamicHeight) {
+  Padding pageTwo(double dynamicHeight, TextStyle textStyleLogo) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: dynamicHeight * 0.1),
       child: Column(
@@ -136,7 +144,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     );
   }
 
-  Padding pageThree(double dynamicHeight) {
+  Padding pageThree(double dynamicHeight, TextStyle textStyleLogo) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: dynamicHeight * 0.1),
       child: SingleChildScrollView(

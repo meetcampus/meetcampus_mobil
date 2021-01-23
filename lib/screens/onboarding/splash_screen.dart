@@ -2,6 +2,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:meetcampus_mobil/screens/login_register/login_screen.dart';
 import 'package:meetcampus_mobil/utilities/styles.dart';
+import 'package:responsive_flutter/responsive_flutter.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -20,6 +21,10 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final textStyleLogo = TextStyle(
+        fontFamily: 'Eras',
+        fontSize: ResponsiveFlutter.of(context).fontSize(4),
+        color: textColorTwo);
     final dynamicHeight = MediaQuery.of(context).size.height * 0.4;
     return Scaffold(
       backgroundColor: backColorBlue,
