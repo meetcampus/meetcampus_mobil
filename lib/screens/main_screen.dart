@@ -1,179 +1,134 @@
 import 'package:flutter/material.dart';
+import 'package:meetcampus_mobil/utilities/class_builder.dart';
+import 'package:meetcampus_mobil/screens/home.dart';
+import 'package:meetcampus_mobil/screens/settings.dart';
+import 'package:meetcampus_mobil/utilities/theme_changer.dart';
 import 'package:meetcampus_mobil/utilities/styles.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:kf_drawer/kf_drawer.dart';
+import 'package:provider/provider.dart';
+
+import 'meet_with_graduates.dart';
 
 class MainScreen extends StatefulWidget {
-  MainScreen({Key key}) : super(key: key);
-
   @override
   _MainScreenState createState() => _MainScreenState();
 }
 
 class _MainScreenState extends State<MainScreen> {
+  KFDrawerController kfDrawerController;
+  bool themeSwitch = false;
+  var val = false;
+  @override
+  void initState() {
+    kfDrawerController = kfDrawerControllers();
+
+    super.initState();
+  }
+
+  KFDrawerController kfDrawerControllers() {
+    return KFDrawerController(
+      initialPage: ClassBuilder.fromString('Home'),
+      items: [
+        KFDrawerItem.initWithPage(
+          text: Text('home'.tr(), style: drawerTitleTextStyle),
+          icon: Icon(Icons.home, color: Colors.white),
+          page: Home(),
+        ),
+        KFDrawerItem.initWithPage(
+          text: Text('meetgraduates'.tr(), style: drawerTitleTextStyle),
+          icon: Icon(Icons.emoji_people, color: Colors.white),
+          page: MeetWithGraduates(),
+        ),
+        KFDrawerItem.initWithPage(
+          text: Text('settings'.tr(), style: drawerTitleTextStyle),
+          icon: Icon(Icons.settings, color: Colors.white),
+          page: Settings(),
+        ),
+        KFDrawerItem.initWithPage(
+          text: Text('logout'.tr(), style: drawerTitleTextStyle),
+          icon: Icon(Icons.logout, color: Colors.white),
+          page: Home(),
+        )
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
-    final dynamicHeight = MediaQuery.of(context).size.height;
-
+    final dynamicWidth = MediaQuery.of(context).size.height;
+    var _themeChanger = Provider.of<ThemeChanger>(context);
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: backColorBlue,
-        shadowColor: Colors.transparent,
-        title: buildTitle(),
-      ),
-      drawer: buildDrawer(dynamicHeight),
-    );
-  }
-
-  Drawer buildDrawer(double dynamicHeight) {
-    return Drawer(
-      child: ListView(
-        padding: EdgeInsets.zero,
-        children: [
-          Ink(
-            height: dynamicHeight / 3,
-            child: DrawerHeader(
-              child: Padding(
-                padding: EdgeInsets.symmetric(vertical: (dynamicHeight / 3) / 5),
-                child: Center(
-                  child: Column(
-                    children: [
-                      CircleAvatar(
-                        maxRadius: 50,
-                        backgroundColor: Colors.transparent,
-                        backgroundImage: AssetImage('assets/o1.png'),
-                      ),
-                      Text(
-                        'Person Name and Photo',
-                        style: drawerText,
-                      )
-                    ],
+      body: KFDrawer(
+        controller: kfDrawerController,
+        header: Align(
+          alignment: Alignment.centerLeft,
+          child: Container(
+            padding: EdgeInsets.symmetric(horizontal: 16.0),
+            width: dynamicWidth * 0.8,
+            child: Row(
+              children: <Widget>[
+                Container(
+                  height: 50,
+                  width: 50,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(25),
+                      image: DecorationImage(
+                          image: AssetImage('assets/o2.png'),
+                          fit: BoxFit.cover)),
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text('Meet Campus', style: drawerTitleTextStyle),
+                    SizedBox(height: 2),
+                    Text('Student', style: drawerSubTitleTextStyle),
+                  ],
+                )
+              ],
+            ),
+          ),
+        ),
+        footer: Material(
+          borderRadius: BorderRadius.circular(50),
+          clipBehavior: Clip.antiAlias,
+          color: Colors.white.withOpacity(0.0),
+          child: IconButton(
+            tooltip: 'theme',
+            onPressed: () {
+              setState(() {
+                themeSwitch = !themeSwitch;
+                themeSwitch
+                    ? _themeChanger.setTheme(ThemeData.dark())
+                    : _themeChanger.setTheme(ThemeData.light());
+              });
+            },
+            icon: themeSwitch
+                ? Icon(
+                    Icons.brightness_3,
+                    color: themeSwitch ? Colors.white : Colors.white,
+                  )
+                : Icon(
+                    Icons.wb_sunny,
+                    color:
+                        themeSwitch ? Colors.yellowAccent : Colors.yellowAccent,
                   ),
-                ),
-              ),
-              decoration: BoxDecoration(
-                color: backColorBlue,
-              ),
-            ),
           ),
-          ListTile(
-            title: Row(
-              children: [
-                Icon(
-                  Icons.home,
-                  color: Colors.grey,
-                ),
-                SizedBox(
-                  width: 5,
-                ),
-                Text(
-                  'Home',
-                  style: drawerText,
-                ),
-              ],
-            ),
-            onTap: () {},
+        ),
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.centerLeft,
+            end: Alignment(1, 0.0),
+            colors: [
+              themeSwitch ? Color(0xff2E2E2E) : Color(0xff14698E),
+              themeSwitch ? Color(0xff2C2E2C) : Color(0xff35A9DB),
+            ],
           ),
-          ListTile(
-            title: Row(
-              children: [
-                Icon(
-                  Icons.emoji_people,
-                  color: Colors.grey,
-                ),
-                SizedBox(
-                  width: 5,
-                ),
-                Text(
-                  'Meet with the graduates',
-                  style: drawerText,
-                ),
-              ],
-            ),
-            onTap: () {},
-          ),
-          ListTile(
-            title: Row(
-              children: [
-                Icon(
-                  Icons.more_horiz,
-                  color: Colors.grey,
-                ),
-                SizedBox(
-                  width: 5,
-                ),
-                Text(
-                  '',
-                  style: drawerText,
-                ),
-              ],
-            ),
-            onTap: () {},
-          ),
-          ListTile(
-            title: Row(
-              children: [
-                Icon(
-                  Icons.more_horiz,
-                  color: Colors.grey,
-                ),
-                SizedBox(
-                  width: 5,
-                ),
-                Text(
-                  '',
-                  style: drawerText,
-                ),
-              ],
-            ),
-            onTap: () {},
-          ),
-          ListTile(
-            title: Row(
-              children: [
-                Icon(
-                  Icons.more_horiz,
-                  color: Colors.grey,
-                ),
-                SizedBox(
-                  width: 5,
-                ),
-                Text(
-                  '',
-                  style: drawerText,
-                ),
-              ],
-            ),
-            onTap: () {},
-          ),
-          ListTile(
-            title: Row(
-              children: [
-                Icon(
-                  Icons.logout,
-                  color: Colors.grey,
-                ),
-                SizedBox(
-                  width: 5,
-                ),
-                Text(
-                  'Logout',
-                  style: drawerText,
-                ),
-              ],
-            ),
-            onTap: () {},
-          ),
-        ],
+        ),
       ),
-    );
-  }
-
-  Row buildTitle() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.start,
-      children: [
-        Text('meet', style: textStyleLogo),
-        Text('campus', style: textStyleLogo2),
-      ],
     );
   }
 }

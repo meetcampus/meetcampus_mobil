@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:meetcampus_mobil/screens/login_screen.dart';
+import 'package:meetcampus_mobil/screens/login_register/login_screen.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:meetcampus_mobil/utilities/styles.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -42,9 +43,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         child: IconButton(
           onPressed: () {
             print(_controller.page);
-            _controller.animateToPage(_controller.page.toInt() + 1, duration: Duration(milliseconds: 400), curve: Curves.easeIn);
+            _controller.animateToPage(_controller.page.toInt() + 1,
+                duration: Duration(milliseconds: 400), curve: Curves.easeIn);
           },
-          tooltip: 'next page ',
+          tooltip: 'nextpage'.tr(),
           padding: EdgeInsets.only(right: 35),
           icon: Icon(
             Icons.play_arrow,
@@ -66,12 +68,17 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           Row(
             children: [
               Text(
-                'Meet ',
-                style: TextStyle(fontFamily: 'Eras', color: textColorTwo, fontSize: 30),
+                'meet'.tr(),
+                style: TextStyle(
+                    fontFamily: 'Eras', color: textColorTwo, fontSize: 30),
+              ),
+              SizedBox(
+                width: 3,
               ),
               Text(
-                'new friends',
-                style: TextStyle(fontFamily: 'Eras', color: textColorOne, fontSize: 30),
+                'newfriends'.tr(),
+                style: TextStyle(
+                    fontFamily: 'Eras', color: textColorOne, fontSize: 30),
               )
             ],
           ),
@@ -79,7 +86,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             children: [
               Text(
                 dummyString,
-                style: TextStyle(fontFamily: 'Gothic', color: textColorOne, fontSize: 20),
+                style: TextStyle(
+                    fontFamily: 'Gothic', color: textColorOne, fontSize: 20),
               ),
             ],
           ),
@@ -100,12 +108,17 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           Row(
             children: [
               Text(
-                'Graduation ',
-                style: TextStyle(fontFamily: 'Eras', color: textColorTwo, fontSize: 27),
+                'graduation'.tr(),
+                style: TextStyle(
+                    fontFamily: 'Eras', color: textColorTwo, fontSize: 27),
+              ),
+              SizedBox(
+                width: 3,
               ),
               Text(
-                'learning',
-                style: TextStyle(fontFamily: 'Eras', color: textColorOne, fontSize: 27),
+                'learning'.tr(),
+                style: TextStyle(
+                    fontFamily: 'Eras', color: textColorOne, fontSize: 27),
               )
             ],
           ),
@@ -113,7 +126,8 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             children: [
               Text(
                 dummyString,
-                style: TextStyle(fontFamily: 'Gothic', color: textColorOne, fontSize: 20),
+                style: TextStyle(
+                    fontFamily: 'Gothic', color: textColorOne, fontSize: 20),
               ),
             ],
           ),
@@ -135,12 +149,17 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
             Row(
               children: [
                 Text(
-                  'Share ',
-                  style: TextStyle(fontFamily: 'Eras', color: textColorTwo, fontSize: 30),
+                  'share'.tr(),
+                  style: TextStyle(
+                      fontFamily: 'Eras', color: textColorTwo, fontSize: 30),
+                ),
+                SizedBox(
+                  width: 3,
                 ),
                 Text(
-                  'information',
-                  style: TextStyle(fontFamily: 'Eras', color: textColorOne, fontSize: 30),
+                  'information'.tr(),
+                  style: TextStyle(
+                      fontFamily: 'Eras', color: textColorOne, fontSize: 30),
                 )
               ],
             ),
@@ -148,25 +167,30 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               children: [
                 Text(
                   dummyString,
-                  style: TextStyle(fontFamily: 'Gothic', color: textColorOne, fontSize: 20),
+                  style: TextStyle(
+                      fontFamily: 'Gothic', color: textColorOne, fontSize: 20),
                 ),
               ],
             ),
             SizedBox(
               height: 20,
             ),
-            GestureDetector(
+            InkWell(
               onTap: () {
-                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginScreen()));
+                Navigator.pushReplacement(context,
+                    MaterialPageRoute(builder: (context) => LoginScreen()));
               },
-              child: Container(
+              child: Ink(
                 height: 50,
                 width: 150,
-                decoration: BoxDecoration(color: textColorTwo, borderRadius: BorderRadius.circular(10)),
+                decoration: BoxDecoration(
+                    color: textColorTwo,
+                    borderRadius: BorderRadius.circular(10)),
                 child: Center(
                   child: Text(
-                    'START',
-                    style: TextStyle(color: backColorBlue, fontFamily: 'Eras', fontSize: 30),
+                    'start'.tr(),
+                    style: TextStyle(
+                        color: backColorBlue, fontFamily: 'Eras', fontSize: 30),
                   ),
                 ),
               ),
@@ -190,10 +214,12 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               color: Colors.white.withOpacity(0.0),
               child: InkWell(
                 onTap: () {
-                  _controller.animateToPage(_controller.page.toInt() + 3, duration: Duration(milliseconds: 1000), curve: Curves.easeIn);
+                  _controller.animateToPage(_controller.page.toInt() + 3,
+                      duration: Duration(milliseconds: 1000),
+                      curve: Curves.easeIn);
                 },
                 child: Text(
-                  'SKIP',
+                  'skip'.tr(),
                   style: TextStyle(fontFamily: 'Eras', color: textColorOne),
                 ),
               ),
@@ -210,7 +236,11 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
       child: SmoothPageIndicator(
         count: 3,
         controller: _controller,
-        effect: ExpandingDotsEffect(activeDotColor: textColorTwo, dotColor: textColorOne, expansionFactor: 2, dotHeight: 5),
+        effect: ExpandingDotsEffect(
+            activeDotColor: textColorTwo,
+            dotColor: textColorOne,
+            expansionFactor: 2,
+            dotHeight: 5),
       ),
     );
   }

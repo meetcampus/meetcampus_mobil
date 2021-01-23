@@ -11,9 +11,12 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  after_layout: ^1.0.7+2
+  easy_localization: ^2.3.3
+  kf_drawer: ^1.1.2
+  provider: ^4.3.3
   shared_preferences: ^0.5.12+4
   smooth_page_indicator: ^0.2.0
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -30,6 +33,7 @@ flutter:
   uses-material-design: true
   assets:
     - assets/
+    - assets/language/
 
   fonts:
     - family: Eras

@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:meetcampus_mobil/screens/login_screen.dart';
+import 'package:meetcampus_mobil/screens/login_register/login_screen.dart';
 import 'package:meetcampus_mobil/utilities/styles.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -13,7 +13,8 @@ class _SplashScreenState extends State<SplashScreen> {
   void initState() {
     super.initState();
     Timer(Duration(seconds: 3), () {
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => LoginScreen()));
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (context) => LoginScreen()));
     });
   }
 

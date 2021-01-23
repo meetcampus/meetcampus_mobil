@@ -1,12 +1,16 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:meetcampus_mobil/utilities/class_builder.dart';
 import 'package:meetcampus_mobil/screens/main_screen.dart';
-import 'package:meetcampus_mobil/screens/onboarding_screen.dart';
-import 'package:meetcampus_mobil/screens/splash_screen.dart';
+import 'package:meetcampus_mobil/utilities/theme_changer.dart';
+import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 int initScreen;
 void main() async {
+  //create class for drawer
+  ClassBuilder.registerClasses();
   //onboarding just to see once
   WidgetsFlutterBinding.ensureInitialized();
   var prefs = await SharedPreferences.getInstance();
@@ -20,19 +24,38 @@ void main() async {
   await SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
   ]).then((_) {
-    runApp(MyApp());
+    runApp(EasyLocalization(
+      child: MyApp(),
+      supportedLocales: [Locale('en', 'US'), Locale('tr', 'TR')],
+      path: 'assets/language',
+      fallbackLocale: Locale('en', 'US'),
+      saveLocale: true,
+    ));
   });
 }
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    return ChangeNotifierProvider<ThemeChanger>(
+      create: (_) => ThemeChanger(ThemeData.light()),
+      child: MaterialAppWithTheme(),
+    );
+  }
+}
+
+class MaterialAppWithTheme extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    final theme = Provider.of<ThemeChanger>(context);
+
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      localizationsDelegates: context.localizationDelegates,
+      supportedLocales: context.supportedLocales,
+      locale: context.locale,
       title: 'meetcampus',
-      theme: ThemeData(
-        visualDensity: VisualDensity.adaptivePlatformDensity,
-      ),
+      theme: theme.getTheme(),
       initialRoute: initScreen == 0 || initScreen == null ? 'first' : '/',
       routes: {
         '/': (context) => MainScreen(),
