@@ -25,6 +25,10 @@ class _SplashScreenState extends State<SplashScreen> {
         fontFamily: 'Eras',
         fontSize: ResponsiveFlutter.of(context).fontSize(4),
         color: textColorTwo);
+    final textStyleLogo2 = TextStyle(
+        fontFamily: 'Eras',
+        fontSize: ResponsiveFlutter.of(context).fontSize(4),
+        color: textColorOne);
     final dynamicHeight = MediaQuery.of(context).size.height * 0.4;
     return Scaffold(
       backgroundColor: backColorBlue,

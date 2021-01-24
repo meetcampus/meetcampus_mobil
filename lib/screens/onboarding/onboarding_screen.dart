@@ -17,8 +17,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
   Widget build(BuildContext context) {
     final textStyleLogo = TextStyle(
         fontFamily: 'Eras',
-        fontSize: ResponsiveFlutter.of(context).fontSize(4),
+        fontSize: ResponsiveFlutter.of(context).fontSize(3),
         color: textColorTwo);
+
     final dynamicHeight = MediaQuery.of(context).size.height * 0.4;
     return Scaffold(
       backgroundColor: backColorBlue,
@@ -84,7 +85,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                 style: TextStyle(
                     fontFamily: 'Eras',
                     color: textColorOne,
-                    fontSize: ResponsiveFlutter.of(context).fontSize(4)),
+                    fontSize: ResponsiveFlutter.of(context).fontSize(3)),
               )
             ],
           ),
@@ -118,7 +119,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               Text(
                 'graduation'.tr(),
                 style: TextStyle(
-                    fontFamily: 'Eras', color: textColorTwo, fontSize: 27),
+                    fontFamily: 'Eras',
+                    color: textColorTwo,
+                    fontSize: ResponsiveFlutter.of(context).fontSize(3)),
               ),
               SizedBox(
                 width: 3,
@@ -126,7 +129,9 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
               Text(
                 'learning'.tr(),
                 style: TextStyle(
-                    fontFamily: 'Eras', color: textColorOne, fontSize: 27),
+                    fontFamily: 'Eras',
+                    color: textColorOne,
+                    fontSize: ResponsiveFlutter.of(context).fontSize(3)),
               )
             ],
           ),

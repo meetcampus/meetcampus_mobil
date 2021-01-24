@@ -17,14 +17,10 @@ class _SignupScreenState extends State<SignupScreen> {
   Widget build(BuildContext context) {
     final dynamicHeight = MediaQuery.of(context).size.height * 0.4;
     final dynamicWidth = MediaQuery.of(context).size.width;
-    final textStyleLogo = TextStyle(
-        fontFamily: 'Eras',
-        fontSize: ResponsiveFlutter.of(context).fontSize(4),
-        color: textColorTwo);
+
     return Scaffold(
       body: Column(
         children: [
-          SafeArea(child: buildTitle(textStyleLogo)),
           buildUpPanel(dynamicHeight),
           buildBottomPanel(dynamicWidth, dynamicHeight),
         ],
@@ -64,6 +60,7 @@ class _SignupScreenState extends State<SignupScreen> {
         child: Container(
           child: Column(
             children: [
+              SafeArea(child: buildTitle()),
               Image.asset(
                 'assets/register.png',
                 height: dynamicHeight * 0.8,
@@ -217,12 +214,20 @@ class _SignupScreenState extends State<SignupScreen> {
     );
   }
 
-  Row buildTitle(TextStyle textStyleLogo, TextStyle textStyleLogo2) {
+  Row buildTitle() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Text('meet', style: textStyleLogo),
-        Text('campus', style: textStyleLogo2),
+        Text('meet',
+            style: TextStyle(
+                fontFamily: 'Eras',
+                fontSize: ResponsiveFlutter.of(context).fontSize(4),
+                color: textColorTwo)),
+        Text('campus',
+            style: TextStyle(
+                fontFamily: 'Eras',
+                fontSize: ResponsiveFlutter.of(context).fontSize(4),
+                color: textColorOne)),
       ],
     );
   }
