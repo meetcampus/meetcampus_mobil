@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "name": "Cihat",
+    "surname": "Karaboga",
+    "title": "Mobile Developer",
+    "placeOfWork": "b",
+    "twitterUrl": "Hesty Company",
+    "linkedInUr": "Hesty Company",
+    "avatarUrl": "https://scontent.fada1-8.fna.fbcdn.net/v/t1.0-9/71074570_2395748953793582_5236197842636242944_o.jpg?_nc_cat=109&ccb=2&_nc_sid=09cbfe&_nc_ohc=qVnHAaYWiwwAX-jsF9L&_nc_ht=scontent.fada1-8.fna&oh=ed0403e164d4c084830d004ad19d6d10&oe=60319237"
+  },
+  {
+    "id": 2,
+    "name": "Ferhat",
+    "surname": "İltaş",
+    "title": "Mobile Developer",
+    "placeOfWork": "SPACE",
+    "twitterUrl": "Ferhadus Company",
+    "linkedInUr": "Ferhadus Company",
+    "avatarUrl": "https://avatars.githubusercontent.com/u/64915111?s=400&u=40bc9afc7d3a0a121c009b6b24eb007ad93cda24&v=4"
+  },
+  {
+    "id": 3,
+    "name": "Muhammet",
+    "surname": "Çokyaman",
+    "title": "Back End Developer",
+    "placeOfWork": "NOXARC",
+    "twitterUrl": "ckymn Company",
+    "linkedInUr": "ckymn Company",
+    "avatarUrl": "https://avatars.githubusercontent.com/u/60356676?s=400&u=6242010c58ac8bc2264d79b681c62aa59a8da115&v=4"
+  }
+]

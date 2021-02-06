@@ -1,6 +1,16 @@
 [
     {
-        "id": 1,
+    "id": 1,
+    "name": "Ferhat",
+    "surname": "Iltas",
+    "title": "Mobile Developer",
+    "placeOfWork": "a",
+    "twitterUrl": "Hesty Company",
+    "linkedInUr": "Hesty Company",
+    "avatarUrl": "Hesty Company"
+},
+    {
+        "id": 2,
         "name": "Cihat",
         "surname": "Karaboga",
         "title": "Mobile Developer",
@@ -10,20 +20,10 @@
         "avatarUrl": "Hesty Company"
     },
     {
-        "id": 2,
+        "id": 3,
         "name": "Muhammet",
         "surname": "Cokyaman",
         "title": "Web Developer",
-        "placeOfWork": "a",
-        "twitterUrl": "Hesty Company",
-        "linkedInUr": "Hesty Company",
-        "avatarUrl": "Hesty Company"
-    },
-    {
-        "id": 3,
-        "name": "Ferhat",
-        "surname": "Iltas",
-        "title": "Mobile Developer",
         "placeOfWork": "a",
         "twitterUrl": "Hesty Company",
         "linkedInUr": "Hesty Company",
