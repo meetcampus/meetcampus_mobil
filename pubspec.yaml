@@ -38,6 +38,7 @@ flutter:
     - assets/
     - assets/language/
     - assets/data/personelInformations.json
+    - assets/loading.gif
   fonts:
     - family: Eras
       fonts:

@@ -87,12 +87,14 @@ List<GraduateModel> allPersonelList;
                                         flex: 1,
                                         child: Center(
                                           child:  CircleAvatar(
+
+                                            child: FadeInImage.assetNetwork(placeholder: "assets/loading.gif", image: allPersonelList[index].avatarUrl.toString()),
                                             maxRadius:
                                                 ResponsiveFlutter.of(context)
                                                     .verticalScale(40),
                                             backgroundColor: Colors.transparent,
-                                            backgroundImage: NetworkImage(
-                                                allPersonelList[index].avatarUrl.toString()),
+                                            // backgroundImage: NetworkImage(
+                                            //     allPersonelList[index].avatarUrl.toString()),
                                           ),
                                         ),
                                       ),
